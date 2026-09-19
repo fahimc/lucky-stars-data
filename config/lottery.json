@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "poolSize": 16,
+  "poolSize": 12,
   "pickCount": 4,
   "luckyBall": true,
   "drawDay": "Friday",
@@ -17,7 +17,7 @@
     { "mainMatches": 1, "luckyBallRequired": true, "amountGbp": 1 }
   ],
   "odds": {
-    "anyPrize": "7980/21840",
-    "topPrize": "1/1820"
+    "anyPrize": "285/495",
+    "topPrize": "1/495"
   }
 }

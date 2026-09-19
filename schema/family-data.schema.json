@@ -26,7 +26,7 @@
       "minItems": 4,
       "maxItems": 4,
       "uniqueItems": true,
-      "items": { "type": "integer", "minimum": 1, "maximum": 16 }
+      "items": { "type": "integer", "minimum": 1, "maximum": 12 }
     },
     "ticket": {
       "type": "object",
@@ -75,7 +75,7 @@
           "required": ["main", "luckyBall"],
           "properties": {
             "main": { "$ref": "#/$defs/numbers" },
-            "luckyBall": { "type": "integer", "minimum": 1, "maximum": 16 }
+            "luckyBall": { "type": "integer", "minimum": 1, "maximum": 12 }
           }
         },
         "ticketResults": {

@@ -12,10 +12,12 @@ Public, non-sensitive data repository for the Lucky Stars Family static PWA.
 - `schema/family-data.schema.json` documents the JSON contract.
 - Names, emails, credentials, tokens, and free-text notes are prohibited.
 - Production writes are performed only by the app repository's authenticated Netlify Function after parent-role and payload validation.
+- Current rules use 4 unique ticket numbers from 1–12, 4 main draw numbers, and one Lucky Ball. Any-prize odds are 285/495 (~57.6%); the £10 top prize is 1/495.
 
 ## Current state
 
 - Synthetic `families/demo-family.json` exists for connectivity and schema checks.
+- The schema and app-side Netlify validator both cap stored numbers at 12.
 - The repository is intended to remain public.
 
 ## Resume point
