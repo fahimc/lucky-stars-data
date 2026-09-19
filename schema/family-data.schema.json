@@ -4,12 +4,16 @@
   "title": "Lucky Stars family data",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schemaVersion", "familyId", "childId", "draws"],
+  "required": ["schemaVersion", "familyId", "childId", "tickets", "draws"],
   "properties": {
-    "schemaVersion": { "const": 1 },
+    "schemaVersion": { "const": 2 },
     "familyId": { "type": "string", "pattern": "^[a-z0-9-]{3,64}$" },
     "childId": { "type": "string", "pattern": "^[a-z0-9-]{3,64}$" },
-    "ticket": { "$ref": "#/$defs/ticket" },
+    "tickets": {
+      "type": "array",
+      "maxItems": 5000,
+      "items": { "$ref": "#/$defs/ticket" }
+    },
     "draws": {
       "type": "array",
       "maxItems": 104,
@@ -27,18 +31,41 @@
     "ticket": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["weekId", "childId", "numbers", "issuedAt"],
+      "required": ["id", "weekId", "childId", "numbers", "earnedDate", "issuedAt"],
       "properties": {
+        "id": { "type": "string", "minLength": 8 },
         "weekId": { "type": "string", "pattern": "^[0-9]{4}-W[0-9]{2}$" },
         "childId": { "type": "string" },
         "numbers": { "$ref": "#/$defs/numbers" },
+        "earnedDate": { "type": "string", "format": "date" },
         "issuedAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mainMatches", "luckyMatch", "prize"],
+      "properties": {
+        "mainMatches": { "type": "integer", "minimum": 0, "maximum": 4 },
+        "luckyMatch": { "type": "boolean" },
+        "prize": { "enum": [0, 1, 2, 5, 10] }
+      }
+    },
+    "ticketOutcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ticketId", "earnedDate", "numbers", "result"],
+      "properties": {
+        "ticketId": { "type": "string" },
+        "earnedDate": { "type": "string", "format": "date" },
+        "numbers": { "$ref": "#/$defs/numbers" },
+        "result": { "$ref": "#/$defs/result" }
       }
     },
     "drawRecord": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["weekId", "drawnAt", "draw", "result"],
+      "required": ["weekId", "drawnAt", "draw", "ticketResults", "totalPrize"],
       "properties": {
         "weekId": { "type": "string" },
         "drawnAt": { "type": "string", "format": "date-time" },
@@ -51,16 +78,12 @@
             "luckyBall": { "type": "integer", "minimum": 1, "maximum": 16 }
           }
         },
-        "result": {
-          "type": "object",
-          "additionalProperties": false,
-          "required": ["mainMatches", "luckyMatch", "prize"],
-          "properties": {
-            "mainMatches": { "type": "integer", "minimum": 0, "maximum": 4 },
-            "luckyMatch": { "type": "boolean" },
-            "prize": { "enum": [0, 1, 2, 5, 10] }
-          }
-        }
+        "ticketResults": {
+          "type": "array",
+          "maxItems": 5000,
+          "items": { "$ref": "#/$defs/ticketOutcome" }
+        },
+        "totalPrize": { "type": "integer", "minimum": 0 }
       }
     }
   }

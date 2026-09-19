@@ -1,6 +1,7 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "familyId": "demo-family",
   "childId": "demo-child",
+  "tickets": [],
   "draws": []
 }

@@ -5,6 +5,11 @@
   "luckyBall": true,
   "drawDay": "Friday",
   "timeZone": "Europe/London",
+  "ticketPolicy": {
+    "earnedDateRequired": true,
+    "perDayLimit": null,
+    "revocableUntilDraw": true
+  },
   "prizes": [
     { "mainMatches": 4, "luckyBallRequired": false, "amountGbp": 10 },
     { "mainMatches": 3, "luckyBallRequired": false, "amountGbp": 5 },
