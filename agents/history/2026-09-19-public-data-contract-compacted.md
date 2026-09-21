@@ -21,7 +21,8 @@ Public, non-sensitive data repository for the Lucky Stars Family static PWA.
 - The schema and app-side Netlify validator both cap stored numbers at 12.
 - Schema-v2 records accept optional 1–10 `jackpotStar` and `jackpotMatch` fields for backward compatibility; all newly issued tickets and draws include them.
 - The repository is intended to remain public.
+- Release commit `deb3d59` is on `main`. Manual workflow run `35633798659` successfully fetched the live Netlify record and completed the no-change commit step on 2026-09-21.
 
 ## Resume point
 
-Schema v2 is published at `fahimc/lucky-stars-data`. Keep the app validator, this JSON Schema, and the demo record aligned when ticket or draw fields change.
+Schema v2 and the scheduled public mirror are published at `fahimc/lucky-stars-data`. Keep the app validator, this JSON Schema, the configured family IDs, and the mirror workflow aligned when ticket or draw fields change.
