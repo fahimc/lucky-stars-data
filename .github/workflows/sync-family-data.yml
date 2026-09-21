@@ -1,0 +1,37 @@
+name: Sync family data
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-family-data
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Fetch the latest public family record
+        run: |
+          curl --fail --retry 3 --silent --show-error \
+            "https://lucky-stars-family.netlify.app/.netlify/functions/family-data?familyId=demo-family" \
+            --output families/demo-family.next.json
+          jq -e '.schemaVersion == 2 and .familyId == "demo-family" and .childId == "demo-child"' \
+            families/demo-family.next.json >/dev/null
+          mv families/demo-family.next.json families/demo-family.json
+      - name: Commit a changed record
+        run: |
+          if git diff --quiet -- families/demo-family.json; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add families/demo-family.json
+          git commit -m "data: sync Lucky Stars family record"
+          git push

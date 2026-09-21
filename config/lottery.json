@@ -3,6 +3,7 @@
   "poolSize": 12,
   "pickCount": 4,
   "luckyBall": true,
+  "jackpotStar": { "poolSize": 10, "matchAmountGbp": 10 },
   "drawDay": "Friday",
   "timeZone": "Europe/London",
   "ticketPolicy": {
@@ -11,13 +12,14 @@
     "revocableUntilDraw": true
   },
   "prizes": [
+    { "jackpotStarMatch": true, "amountGbp": 10 },
     { "mainMatches": 4, "luckyBallRequired": false, "amountGbp": 10 },
     { "mainMatches": 3, "luckyBallRequired": false, "amountGbp": 5 },
     { "mainMatches": 2, "luckyBallRequired": false, "amountGbp": 2 },
     { "mainMatches": 1, "luckyBallRequired": true, "amountGbp": 1 }
   ],
   "odds": {
-    "anyPrize": "285/495",
-    "topPrize": "1/495"
+    "anyPrize": "34/55",
+    "topPrize": "28/275"
   }
 }
