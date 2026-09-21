@@ -1,1 +1,1 @@
-{"schemaVersion":2,"familyId":"demo-family","childId":"demo-child","tickets":[],"draws":[]}
+{"schemaVersion":2,"familyId":"demo-family","childId":"demo-child","tickets":[{"id":"9e5ef503-923a-4683-9a86-81cc18cd4b2f","weekId":"2026-W39","childId":"demo-child","numbers":[1,5,7,8],"jackpotStar":10,"earnedDate":"2026-09-21","issuedAt":"2026-09-21T20:30:54.345Z"}],"draws":[]}
